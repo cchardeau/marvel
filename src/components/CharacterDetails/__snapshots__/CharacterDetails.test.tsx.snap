@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<h2
+  className="MuiTypography-root makeStyles-characterName-48 MuiTypography-h5 MuiTypography-gutterBottom"
+  onClick={[Function]}
+>
+  name
+</h2>
+`;

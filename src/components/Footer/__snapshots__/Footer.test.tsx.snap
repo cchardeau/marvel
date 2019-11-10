@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<footer
+  className="makeStyles-footer-32"
+>
+  <h6
+    className="MuiTypography-root MuiTypography-h6 MuiTypography-gutterBottom MuiTypography-alignCenter"
+  >
+    Corentin Chardeau
+  </h6>
+  <p
+    className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorTextSecondary MuiTypography-alignCenter"
+  >
+    Peaks @ 2019
+  </p>
+</footer>
+`;

@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="makeStyles-app-227"
+>
+  <header
+    className="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionRelative MuiAppBar-colorPrimary"
+  >
+    <div
+      className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+    >
+      <svg
+        aria-hidden="true"
+        className="MuiSvgIcon-root makeStyles-icon-229"
+        focusable="false"
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="3.2"
+        />
+        <path
+          d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"
+        />
+      </svg>
+      <h6
+        className="MuiTypography-root MuiTypography-h6 MuiTypography-colorInherit MuiTypography-noWrap"
+      >
+        Marvel app
+      </h6>
+    </div>
+  </header>
+  <main>
+    <div
+      className="makeStyles-headerContent-309"
+    >
+      <div
+        className="MuiContainer-root MuiContainer-maxWidthSm"
+      >
+        <h1
+          className="MuiTypography-root MuiTypography-h2 MuiTypography-colorTextPrimary MuiTypography-gutterBottom MuiTypography-alignCenter"
+        >
+          Marvel app
+        </h1>
+        <p
+          className="MuiTypography-root MuiTypography-h5 MuiTypography-colorTextSecondary MuiTypography-paragraph MuiTypography-alignCenter"
+        >
+          Whatever happens tomorrow you must promise me one thing. That you will stay who you are. Not a perfect soldier, but a good man.
+        </p>
+        <p
+          className="MuiTypography-root MuiTypography-h5 MuiTypography-colorTextSecondary MuiTypography-paragraph MuiTypography-alignCenter"
+        >
+          <i>
+            Captain America
+          </i>
+        </p>
+        <div
+          className="makeStyles-headerButton-310"
+        >
+          <div
+            className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-justify-xs-center"
+          >
+            <div
+              className="MuiGrid-root MuiGrid-item"
+            >
+              <button
+                className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiButton-label"
+                >
+                  Visit API website
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiContainer-root makeStyles-cardGrid-228 MuiContainer-maxWidthMd"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4 MuiGrid-justify-xs-center"
+      />
+    </div>
+  </main>
+  <footer
+    className="makeStyles-footer-452"
+  >
+    <h6
+      className="MuiTypography-root MuiTypography-h6 MuiTypography-gutterBottom MuiTypography-alignCenter"
+    >
+      Corentin Chardeau
+    </h6>
+    <p
+      className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorTextSecondary MuiTypography-alignCenter"
+    >
+      Peaks @ 2019
+    </p>
+  </footer>
+</div>
+`;
