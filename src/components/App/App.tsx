@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import Button from '@material-ui/core/Button'
+import ButtonGroup from '@material-ui/core/ButtonGroup'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import Grid from '@material-ui/core/Grid'
@@ -15,6 +17,9 @@ import { TCharacter } from '../../models/Character'
 const useStyles = makeStyles(theme => ({
   app: {
     textAlign: 'center'
+  },
+  paginationGrid: {
+    paddingTop: theme.spacing(8)
   },
   cardGrid: {
     paddingTop: theme.spacing(8),
@@ -37,6 +42,7 @@ const App: React.FC = () => {
   // init
   const [data, setData] = useState({ characters: [] })
   const [isLoading, setIsLoading] = useState(false)
+  const [offset, setOffset] = useState(100)
   
   // styling
   const classes = useStyles()
@@ -57,7 +63,7 @@ const App: React.FC = () => {
         params: {
           apikey: REACT_APP_MARVEL_KEY,
           limit: 20,
-          offset: 100
+          offset
         }
       })
 
@@ -76,7 +82,7 @@ const App: React.FC = () => {
     }
 
     fetchData()
-  }, [])
+  }, [offset])
 
   return (
     <div className={classes.app}>
@@ -84,6 +90,18 @@ const App: React.FC = () => {
       <Navbar />
       <main>
         <Header />
+        <Container className={classes.paginationGrid} maxWidth="md">
+          <Grid container justify="center">
+            <ButtonGroup color="primary" aria-label="outlined primary button group">
+              <Button disabled={offset < 20} onClick={(event => { event.preventDefault(); setOffset(offset - 20) })}>
+                Previous
+              </Button>
+              <Button disabled={offset > 1460} onClick={(event => { event.preventDefault(); setOffset(offset + 20) })}>
+                Next
+              </Button>
+            </ButtonGroup>
+          </Grid>
+        </Container>
         <Container className={classes.cardGrid} maxWidth="md">
           <Grid container spacing={4} justify="center"> 
             { isLoading ? <CircularProgress /> : data.characters.map((character: TCharacter) => (<Character character={character} key={character.id} />)) }
