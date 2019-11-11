@@ -5,4 +5,5 @@ export type TCharacter = {
   description: string
   comicsCount: number
   comics: string[]
+  isFavorite: boolean
 }

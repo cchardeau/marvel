@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
+import axios from 'axios'
 import Button from '@material-ui/core/Button'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
@@ -33,6 +34,39 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const Character: React.FC<Props> = ({ character }) => {
+  // init
+  const [isFavorite, setIsFavorite] = useState(false)
+  const [isSending, setIsSending] = useState(false)
+
+  const sendRequest = useCallback(async () => {
+    const { REACT_APP_FAVORITE_URL } = process.env
+    if (!REACT_APP_FAVORITE_URL) {
+      throw new Error('missing .env variables')
+    }
+
+    // don't send again while we are sending
+    if (isSending) return
+
+    // disable favorite button
+    setIsSending(true)
+
+    // send the actual request
+    const response = await axios.post(`${REACT_APP_FAVORITE_URL}/favorite`, { favoriteId: character.id })
+    const favoriteId = response && response.data ? response.data.favoriteId : []
+    const isFavorite = Boolean(favoriteId.includes(character.id))
+
+    // set favorite
+    setIsFavorite(isFavorite)
+
+    // re-enable favorite button
+    setIsSending(false)
+  }, [isSending, character]) // update the callback if the state changes
+
+  // init character isFavorite
+  useEffect(() => {
+    setIsFavorite(character.isFavorite)
+  }, [character])
+
   // styling
   const classes = useStyles()
 
@@ -49,8 +83,8 @@ const Character: React.FC<Props> = ({ character }) => {
             <CharacterDetails character={character} />
           </CardContent>
           <CardActions>
-            <Button size="small" color="primary">
-              Set as favorite
+            <Button size="small" color="primary" disabled={isSending} onClick={sendRequest}>
+              { isFavorite ? 'Remove from favorite' : 'Set as favorite' }
             </Button>
           </CardActions>
         </Card>

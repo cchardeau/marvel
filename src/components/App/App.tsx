@@ -23,13 +23,14 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const toCharacter = (entity: any): TCharacter => ({
+const toCharacter = (entity: any, favoriteId: ReadonlyArray<number>): TCharacter => ({
   id: entity.id,
   name: entity.name,
   thumbnail: `${entity.thumbnail.path}/landscape_amazing.${entity.thumbnail.extension}`,
   description: entity.description,
   comicsCount: entity.comics.available,
-  comics: entity.comics.items.slice(0, 3).map((comic: any) => comic.name)
+  comics: entity.comics.items.slice(0, 3).map((comic: any) => comic.name),
+  isFavorite: Boolean(favoriteId.includes(entity.id))
 })
 
 const App: React.FC = () => {
@@ -42,27 +43,39 @@ const App: React.FC = () => {
 
   // fetch characters on mount
   useEffect(() => {
-    const { REACT_APP_MARVEL_URL, REACT_APP_MARVEL_KEY } = process.env
-    if (!REACT_APP_MARVEL_URL || !REACT_APP_MARVEL_KEY) {
+    const { REACT_APP_MARVEL_URL, REACT_APP_MARVEL_KEY, REACT_APP_FAVORITE_URL } = process.env
+    if (!REACT_APP_MARVEL_URL || !REACT_APP_MARVEL_KEY || !REACT_APP_FAVORITE_URL) {
       throw new Error('missing .env variables')
     }
 
-    setIsLoading(true)
-    axios.get(`${REACT_APP_MARVEL_URL}/characters`, {
-      params: {
-        apikey: REACT_APP_MARVEL_KEY,
-        limit: 20,
-        offset: 100
-      }
-    })
-    .then((response: any) => {
+    const fetchData = async () => {
+      // display loader
+      setIsLoading(true)
+
+      // get characters from Marvel API
+      const response = await axios.get(`${REACT_APP_MARVEL_URL}/characters`, {
+        params: {
+          apikey: REACT_APP_MARVEL_KEY,
+          limit: 20,
+          offset: 100
+        }
+      })
+
       const { data: { results } } = response.data
       if (response.statusText === 'OK' && results) {
-        setData({ characters: results.map(toCharacter) })
+        // when everything is OK, get favorites for the current user
+        const favoriteResponse = await axios.get(`${REACT_APP_FAVORITE_URL}/favorite`)
+        const favoriteId = favoriteResponse && favoriteResponse.data ? favoriteResponse.data.favoriteId : []
+
+        // update characters
+        setData({ characters: results.map((entity: any) => toCharacter(entity, favoriteId)) })
+
+        // hide loader
         setIsLoading(false)
       }
-    })
-    .catch((err: any) => console.error(err))
+    }
+
+    fetchData()
   }, [])
 
   return (

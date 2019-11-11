@@ -11,7 +11,8 @@ const mockCharacter: TCharacter = {
   thumbnail: 'https://thumbnail',
   description: 'description', 
   comicsCount: 42,
-  comics: []
+  comics: [],
+  isFavorite: false
 }
 
 it('renders without crashing', () => {
