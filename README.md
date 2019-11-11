@@ -7,8 +7,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Before launching the project, you must create a `.env` file at the project root following this structure:
 ```
-REACT_APP_MARVEL_URL=https://marvel_api_url_here
+REACT_APP_MARVEL_URL=https://your_marvel_api_url_here
 REACT_APP_MARVEL_KEY=your_marvel_public_key_here
+REACT_APP_FAVORITE_URL=https://your_favorite_api_url_here
 ```
 
 Then launch `npm install` to install project dependencies.
