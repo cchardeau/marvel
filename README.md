@@ -1,6 +1,6 @@
 # Marvel app made by Corentin Chardeau
 
-This project is listing characters from [Marvel API](https://developer.marvel.com).
+This project is listing characters from [Marvel API](https://developer.marvel.com).<br />
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Before starting
@@ -10,6 +10,8 @@ Before launching the project, you must create a `.env` file at the project root 
 REACT_APP_MARVEL_URL=https://marvel_api_url_here
 REACT_APP_MARVEL_KEY=your_marvel_public_key_here
 ```
+
+Then launch `npm install` to install project dependencies.
 
 ## Available Scripts
 
